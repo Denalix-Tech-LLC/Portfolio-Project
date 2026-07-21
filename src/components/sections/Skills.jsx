@@ -11,7 +11,7 @@ export default function Skills() {
     <Section id="skills" labelledby="skills-heading">
       <Reveal>
         <Eyebrow>skills</Eyebrow>
-        <h2 id="skills-heading" className="max-w-3xl text-4xl font-semibold sm:text-5xl">
+        <h2 id="skills-heading" className="h2-rule max-w-3xl text-4xl font-semibold sm:text-5xl">
           The stack I build with.
         </h2>
       </Reveal>

@@ -13,7 +13,7 @@ export default function About() {
     <Section id="about" labelledby="about-heading">
       <Reveal>
         <Eyebrow>about</Eyebrow>
-        <h2 id="about-heading" className="max-w-3xl text-4xl font-semibold sm:text-5xl">
+        <h2 id="about-heading" className="h2-rule max-w-3xl text-4xl font-semibold sm:text-5xl">
           Product Engineer who ships — from user to production.
         </h2>
       </Reveal>

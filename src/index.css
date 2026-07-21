@@ -16,13 +16,13 @@
   --c-ink-soft: 125 132 149; /* #7D8495 muted labels/dates (~5:1 on bg — AA) */
   --c-line: 38 42 54; /* #262A36 borders */
 
-  /* Accent — "Signal" violet. 600 = button fill (white text, AA). */
-  --c-accent-200: 221 214 254;
-  --c-accent-300: 196 181 253;
-  --c-accent-400: 167 139 250; /* text/links on dark (~7:1) */
-  --c-accent-500: 139 92 246; /* decorative / glow */
-  --c-accent-600: 124 58 237; /* button fill (white text ~5.7:1) */
-  --c-accent-700: 109 40 217;
+  /* Accent — "Sky" light blue. 600 = button fill (white text, AA). */
+  --c-accent-200: 186 230 253;
+  --c-accent-300: 125 211 252; /* text/links on dark (~11:1) */
+  --c-accent-400: 56 189 248; /* strong accent text (~8.5:1) */
+  --c-accent-500: 14 165 233; /* decorative / glow */
+  --c-accent-600: 3 105 161; /* button fill (white text ~5.9:1) */
+  --c-accent-700: 7 89 133;
 
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -153,6 +153,47 @@
     to {
       transform: rotateX(-22deg) rotateY(392deg);
     }
+  }
+
+  /* Orbit rings — dashed circles with a glowing satellite dot, wrapped
+     around the hero cube. Frozen by the global reduced-motion rule. */
+  .orbit {
+    position: absolute;
+    border: 1px dashed rgb(var(--c-accent-500) / 0.3);
+    border-radius: 9999px;
+    animation: orbit-spin linear infinite;
+  }
+  .orbit-dot {
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    border-radius: 9999px;
+    background: rgb(var(--c-accent-400));
+    box-shadow: 0 0 10px rgb(var(--c-accent-400) / 0.9);
+  }
+  @keyframes orbit-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Section heading rule — a gradient line that draws in when the heading
+     scrolls into view (instant under reduced motion). */
+  .h2-rule::after {
+    content: '';
+    display: block;
+    margin-top: 0.9rem;
+    height: 3px;
+    width: 4rem;
+    border-radius: 2px;
+    background: linear-gradient(90deg, rgb(var(--c-accent-500)), rgb(var(--c-accent-300)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s var(--ease-smooth) 0.25s;
+  }
+  .reveal[data-visible='true'] .h2-rule::after {
+    transform: scaleX(1);
   }
 
   /* Skip link — hidden until focused. */

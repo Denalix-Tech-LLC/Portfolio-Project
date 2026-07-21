@@ -19,9 +19,20 @@ export default function Hero() {
       {/* Fade the canvas into the page at the bottom. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
 
-      {/* 3D wireframe cube — floats gently at the hero's right edge. */}
-      <div className="pointer-events-none absolute right-[9%] top-[24%] hidden animate-float lg:block" aria-hidden="true">
-        <WireCube size={116} className="opacity-80" />
+      {/* 3D wireframe cube with orbiting satellites — hero's right edge. */}
+      <div
+        className="pointer-events-none absolute right-[6%] top-[20%] hidden animate-float lg:block"
+        aria-hidden="true"
+      >
+        <div className="relative flex h-60 w-60 items-center justify-center">
+          <span className="orbit inset-0" style={{ animationDuration: '16s' }}>
+            <span className="orbit-dot" />
+          </span>
+          <span className="orbit inset-7" style={{ animationDuration: '10s', animationDirection: 'reverse' }}>
+            <span className="orbit-dot" />
+          </span>
+          <WireCube size={104} className="opacity-80" />
+        </div>
       </div>
 
       {/* Aurora — slow drifting glow blobs behind the content. */}
@@ -100,6 +111,20 @@ export default function Hero() {
             ))}
           </dl>
         </Reveal>
+
+        {/* Scroll hint — a dot travels down a hairline toward the next section. */}
+        <div className="mt-12 hidden justify-center sm:flex">
+          <a
+            href="#about"
+            aria-label="Scroll to the about section"
+            className="group flex flex-col items-center gap-2 text-ink-soft transition-colors hover:text-accent-300"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em]">scroll</span>
+            <span className="relative h-10 w-px overflow-hidden bg-line">
+              <span className="absolute left-0 top-0 h-3 w-px animate-scroll-dot bg-accent-400" />
+            </span>
+          </a>
+        </div>
       </Container>
     </section>
   )

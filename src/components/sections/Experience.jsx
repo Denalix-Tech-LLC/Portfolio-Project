@@ -9,7 +9,7 @@ export default function Experience() {
     <Section id="experience" labelledby="experience-heading">
       <Reveal>
         <Eyebrow>experience</Eyebrow>
-        <h2 id="experience-heading" className="max-w-3xl text-4xl font-semibold sm:text-5xl">
+        <h2 id="experience-heading" className="h2-rule max-w-3xl text-4xl font-semibold sm:text-5xl">
           Where I’ve shipped.
         </h2>
       </Reveal>

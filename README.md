@@ -18,8 +18,8 @@ Requires Node 18+ (developed on Node 24).
 
 - **Style: Bento grid** (chosen from the morphism/layout options) — modular tiles suit a dense
   technical résumé and read as modern/AI-forward. Dark "engineer" theme.
-- **One accent — "Signal" violet** (`#8B5CF6`), shipped as a scale. Buttons use `accent-600` +
-  white text (~5.7:1); links/labels use `accent-300/400` on the dark bg (~7:1). All AA.
+- **One accent — "Sky" light blue** (`#0EA5E9`), shipped as a scale. Buttons use `accent-600` +
+  white text (~5.9:1); links/labels use `accent-300/400` on the dark bg (~8–11:1). All AA.
 - **Type:** `Space Grotesk` (display) + `Manrope` (body) + `JetBrains Mono` (code/labels) —
   self-hosted via `@fontsource-variable` (no runtime Google request).
 - **Tokens:** colors are CSS variables (RGB channels) in `src/index.css`; spacing/radii/shadows

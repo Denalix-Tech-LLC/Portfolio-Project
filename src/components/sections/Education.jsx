@@ -8,7 +8,7 @@ export default function Education() {
     <Section id="education" labelledby="education-heading">
       <Reveal>
         <Eyebrow>education &amp; certifications</Eyebrow>
-        <h2 id="education-heading" className="max-w-3xl text-4xl font-semibold sm:text-5xl">
+        <h2 id="education-heading" className="h2-rule max-w-3xl text-4xl font-semibold sm:text-5xl">
           Foundations & credentials.
         </h2>
       </Reveal>

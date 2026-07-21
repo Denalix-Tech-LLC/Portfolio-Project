@@ -36,7 +36,7 @@ export default function Contact() {
 
           <div className="relative">
             <Eyebrow>contact</Eyebrow>
-            <h2 id="contact-heading" className="max-w-2xl text-4xl font-semibold sm:text-5xl">
+            <h2 id="contact-heading" className="h2-rule max-w-2xl text-4xl font-semibold sm:text-5xl">
               {contact.heading}
             </h2>
             <p className="mt-5 max-w-prose text-lg text-ink-muted">{contact.blurb}</p>

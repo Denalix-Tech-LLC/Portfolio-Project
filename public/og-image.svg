@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Prasanna Kumar — Software & Backend Engineer">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Prasanna Kumar — Product Engineer">
   <!-- Placeholder social-share image (1200×630). Export a PNG/JPG for best results. -->
   <rect width="1200" height="630" fill="#0A0B0F" />
-  <circle cx="1030" cy="120" r="340" fill="#8B5CF6" opacity="0.18" />
-  <circle cx="150" cy="560" r="260" fill="#6D28D9" opacity="0.14" />
-  <text x="90" y="250" font-family="'JetBrains Mono', monospace" font-size="30" fill="#A78BFA">&gt; software · backend · AI infra</text>
+  <circle cx="1030" cy="120" r="340" fill="#0EA5E9" opacity="0.16" />
+  <circle cx="150" cy="560" r="260" fill="#075985" opacity="0.16" />
+  <text x="90" y="250" font-family="'JetBrains Mono', monospace" font-size="30" fill="#38BDF8">&gt; product · backend · generative ai</text>
   <text x="86" y="360" font-family="'Space Grotesk', sans-serif" font-size="88" fill="#E7E9EE" font-weight="700">Prasanna Kumar</text>
-  <text x="90" y="428" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#9EA4B3">Software &amp; Backend Engineer · Python · HPC · CI/CD</text>
-  <rect x="90" y="478" width="120" height="8" rx="4" fill="#8B5CF6" />
+  <text x="90" y="428" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#9EA4B3">Product Engineer — Python · REST APIs · Generative AI</text>
+  <rect x="90" y="478" width="120" height="8" rx="4" fill="#0EA5E9" />
 </svg>

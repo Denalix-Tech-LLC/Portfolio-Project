@@ -94,6 +94,11 @@ export default {
           '33%': { transform: 'translate(70px, -50px) scale(1.15)' },
           '66%': { transform: 'translate(-50px, 40px) scale(0.92)' },
         },
+        'scroll-dot': {
+          '0%': { transform: 'translateY(-12px)', opacity: '0' },
+          '30%': { opacity: '1' },
+          '100%': { transform: 'translateY(40px)', opacity: '0' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
@@ -101,6 +106,7 @@ export default {
         blink: 'blink 1s step-end infinite',
         shimmer: 'shimmer 8s linear infinite',
         aurora: 'aurora 18s ease-in-out infinite',
+        'scroll-dot': 'scroll-dot 1.8s ease-in-out infinite',
       },
     },
   },
