@@ -10,7 +10,7 @@ export const education = [
     location: 'Cleveland, USA',
   },
   {
-    school: 'IIT — RK Valley, RGUKT (Rajiv Gandhi University of Knowledge and Technologies)',
+    school: 'IIIT — RK Valley, RGUKT (Rajiv Gandhi University of Knowledge and Technologies)',
     degree: 'B.S., Computer Science Engineering',
     period: 'Aug 2016 — Oct 2020',
     location: 'Andhra Pradesh, India',
