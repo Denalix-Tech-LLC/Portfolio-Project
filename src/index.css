@@ -196,6 +196,50 @@
     transform: scaleX(1);
   }
 
+  /* Blur-in words (ReactBits "Blur Text") — each word un-blurs and rises,
+     staggered via inline animation-delay. Instant under reduced motion. */
+  .blur-word {
+    display: inline-block;
+    opacity: 0;
+    animation: blur-in 0.7s var(--ease-smooth) both;
+  }
+  @keyframes blur-in {
+    from {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: none;
+    }
+  }
+
+  /* Star border (ReactBits "Star Border") — a bright arc orbits the pill's
+     1px rim. Child must carry its own opaque bg + matching radius. */
+  .star-border {
+    position: relative;
+    display: inline-flex;
+    padding: 1px;
+    border-radius: 9999px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .star-border::before {
+    content: '';
+    position: absolute;
+    inset: -150%;
+    z-index: -1;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg 300deg,
+      rgb(var(--c-accent-400) / 0.9) 330deg,
+      transparent 360deg
+    );
+    animation: orbit-spin 5s linear infinite;
+  }
+
   /* Skip link — hidden until focused. */
   .skip-link {
     @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition-transform;

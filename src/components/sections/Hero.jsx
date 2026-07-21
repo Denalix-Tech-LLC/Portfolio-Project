@@ -8,6 +8,8 @@ import NeuralCanvas from '../ui/NeuralCanvas'
 import WireCube from '../ui/WireCube'
 import SocialIcon from '../ui/SocialIcon'
 import BentoCard from '../ui/BentoCard'
+import BlurText from '../ui/BlurText'
+import Magnetic from '../ui/Magnetic'
 
 export default function Hero() {
   const { hero, roles, stats, availability, socials, shortName } = profile
@@ -46,14 +48,16 @@ export default function Hero() {
 
       <Container className="relative z-10 flex min-h-[88vh] flex-col justify-center py-20">
         <Reveal className="max-w-4xl">
-          {/* Availability status */}
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 font-mono text-xs text-ink-muted backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
-            </span>
-            {availability}
-          </p>
+          {/* Availability status — star-border: a light orbits the pill's rim. */}
+          <div className="star-border mb-6">
+            <p className="inline-flex items-center gap-2 rounded-full border border-line bg-bg/90 px-3 py-1 font-mono text-xs text-ink-muted backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-500" />
+              </span>
+              {availability}
+            </p>
+          </div>
 
           <h1 className="text-6xl font-semibold sm:text-7xl">
             <span className="text-gradient animate-shimmer">{shortName}</span>
@@ -65,14 +69,20 @@ export default function Hero() {
             <Typewriter words={roles} className="text-accent-300" />
           </p>
 
-          <p className="mt-7 max-w-2xl text-lg text-ink-muted sm:text-xl">{hero.subhead}</p>
+          <p className="mt-7 max-w-2xl text-lg text-ink-muted sm:text-xl">
+            <BlurText text={hero.subhead} />
+          </p>
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button href={hero.primaryCta.href}>{hero.primaryCta.label}</Button>
-              <Button href={hero.secondaryCta.href} variant="secondary">
-                {hero.secondaryCta.label}
-              </Button>
+              <Magnetic>
+                <Button href={hero.primaryCta.href}>{hero.primaryCta.label}</Button>
+              </Magnetic>
+              <Magnetic>
+                <Button href={hero.secondaryCta.href} variant="secondary">
+                  {hero.secondaryCta.label}
+                </Button>
+              </Magnetic>
             </div>
             <ul role="list" className="flex items-center gap-2 sm:ml-2">
               {socials.map((s) => (

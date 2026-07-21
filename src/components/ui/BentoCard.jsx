@@ -63,6 +63,22 @@ export default function BentoCard({
             }}
           />
         )}
+        {active && (
+          /* Spotlight border — a glowing 1px ring segment tracks the cursor
+             (masked so only the rim shows, ReactBits "Spotlight Card"). */
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/bento:opacity-100"
+            style={{
+              padding: '1px',
+              background:
+                'radial-gradient(14rem circle at var(--gx, 50%) var(--gy, 50%), rgb(var(--c-accent-400) / 0.6), transparent 70%)',
+              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMaskComposite: 'xor',
+              maskComposite: 'exclude',
+            }}
+          />
+        )}
         {children}
       </div>
     </Tag>
