@@ -23,8 +23,8 @@ export default function About() {
           {/* Portrait */}
           <BentoCard className="lg:row-span-2" tilt={false} bodyClassName="!p-0 overflow-hidden">
             <img
-              src="/prasanna.png"
-              alt="Prasanna Kumar Reddy Peram"
+              src={profile.portrait || '/prasanna.png'}
+              alt={profile.name}
               loading="lazy"
               decoding="async"
               className="aspect-[4/5] h-full w-full object-cover object-top lg:aspect-auto"
