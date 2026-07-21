@@ -13,6 +13,7 @@ const NAV = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('')
   const close = () => setOpen(false)
 
   useEffect(() => {
@@ -22,6 +23,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Scrollspy — highlight the section currently in the middle of the viewport.
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return
+    const sections = NAV.map((n) => document.getElementById(n.id)).filter(Boolean)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
+
   useEffect(() => {
     if (!open) return
     const onKey = (e) => e.key === 'Escape' && close()
@@ -29,8 +46,10 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
-  const linkClass =
-    'font-mono text-sm text-ink-muted transition-colors hover:text-accent-300 focus-visible:text-accent-300'
+  const linkClass = (id) =>
+    `font-mono text-sm transition-colors hover:text-accent-300 focus-visible:text-accent-300 ${
+      active === id ? 'text-accent-300' : 'text-ink-muted'
+    }`
 
   return (
     <header
@@ -50,7 +69,11 @@ export default function Navbar() {
             <ul role="list" className="flex items-center gap-7">
               {NAV.map((item) => (
                 <li key={item.id}>
-                  <a href={`#${item.id}`} className={linkClass}>
+                  <a
+                    href={`#${item.id}`}
+                    className={linkClass(item.id)}
+                    aria-current={active === item.id ? 'true' : undefined}
+                  >
                     {item.label}
                   </a>
                 </li>
@@ -86,7 +109,10 @@ export default function Navbar() {
                   <a
                     href={`#${item.id}`}
                     onClick={close}
-                    className="block rounded-md px-2 py-3 font-mono text-base text-ink hover:bg-surface2"
+                    aria-current={active === item.id ? 'true' : undefined}
+                    className={`block rounded-md px-2 py-3 font-mono text-base hover:bg-surface2 ${
+                      active === item.id ? 'text-accent-300' : 'text-ink'
+                    }`}
                   >
                     {item.label}
                   </a>

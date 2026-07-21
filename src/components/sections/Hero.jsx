@@ -69,7 +69,10 @@ export default function Hero() {
         <Reveal delay={120} className="mt-16">
           <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="rounded-xl border border-line bg-surface/60 p-4 backdrop-blur-sm">
+              <div
+                key={stat.label}
+                className="rounded-xl border border-line bg-surface/60 p-4 backdrop-blur-sm transition-colors duration-300 hover:border-accent-500/40"
+              >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
                   <CountUp

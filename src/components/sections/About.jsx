@@ -25,6 +25,8 @@ export default function About() {
             <img
               src={profile.portrait || '/prasanna.png'}
               alt={profile.name}
+              width="800"
+              height="1000"
               loading="lazy"
               decoding="async"
               className="aspect-[4/5] h-full w-full object-cover object-top lg:aspect-auto"
