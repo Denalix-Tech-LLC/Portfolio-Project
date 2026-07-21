@@ -116,6 +116,35 @@
     color: transparent;
   }
 
+  /* 3D wireframe cube — hero accent (see ui/WireCube.jsx). Frozen mid-spin
+     under prefers-reduced-motion (the global rule zeroes the duration), which
+     leaves a pleasing static 3D corner view thanks to the keyframe offsets. */
+  .cube-scene {
+    perspective: 700px;
+  }
+  .cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: cube-spin 26s linear infinite;
+  }
+  .cube-face {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgb(var(--c-accent-500) / 0.45);
+    background: rgb(var(--c-accent-500) / 0.045);
+    box-shadow: 0 0 24px 0 rgb(var(--c-accent-500) / 0.06) inset;
+  }
+  @keyframes cube-spin {
+    from {
+      transform: rotateX(-22deg) rotateY(32deg);
+    }
+    to {
+      transform: rotateX(-22deg) rotateY(392deg);
+    }
+  }
+
   /* Skip link — hidden until focused. */
   .skip-link {
     @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition-transform;

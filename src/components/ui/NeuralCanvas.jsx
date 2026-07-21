@@ -35,6 +35,9 @@ export default function NeuralCanvas({ className = '' }) {
     let raf = null
     const pointer = { x: -9999, y: -9999, active: false }
     const LINK_DIST = 130
+    // 3D: each node carries a depth z ∈ [0.25, 1]. Depth drives size, speed,
+    // brightness and a slight cursor parallax — a depth-field without any 3D lib.
+    const PARALLAX = 0.05
 
     const resize = () => {
       const rect = parent.getBoundingClientRect()
@@ -52,60 +55,74 @@ export default function NeuralCanvas({ className = '' }) {
       nodes = Array.from({ length: target }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
+        z: 0.25 + Math.random() * 0.75,
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
+        vz: (Math.random() - 0.5) * 0.002, // slow breathing in depth
       }))
     }
+
+    // Projected screen position: cursor shifts near nodes more than far ones.
+    const px = (n) =>
+      n.x + (pointer.active ? (pointer.x - width / 2) * (n.z - 0.6) * PARALLAX : 0)
+    const py = (n) =>
+      n.y + (pointer.active ? (pointer.y - height / 2) * (n.z - 0.6) * PARALLAX : 0)
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
-      // Edges between nearby nodes.
+      // Edges between nearby nodes — brightness follows the pair's mean depth.
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i]
+        const ax = px(a)
+        const ay = py(a)
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j]
-          const dx = a.x - b.x
-          const dy = a.y - b.y
-          const dist = Math.hypot(dx, dy)
+          const bx = px(b)
+          const by = py(b)
+          const dist = Math.hypot(ax - bx, ay - by)
           if (dist < LINK_DIST) {
-            ctx.strokeStyle = `rgb(${accent} / ${0.18 * (1 - dist / LINK_DIST)})`
-            ctx.lineWidth = 1
+            const depth = (a.z + b.z) / 2
+            ctx.strokeStyle = `rgb(${accent} / ${0.22 * (1 - dist / LINK_DIST) * depth})`
+            ctx.lineWidth = 0.5 + depth * 0.7
             ctx.beginPath()
-            ctx.moveTo(a.x, a.y)
-            ctx.lineTo(b.x, b.y)
+            ctx.moveTo(ax, ay)
+            ctx.lineTo(bx, by)
             ctx.stroke()
           }
         }
         // Edge to the cursor (interactive highlight).
         if (pointer.active) {
-          const dist = Math.hypot(a.x - pointer.x, a.y - pointer.y)
+          const dist = Math.hypot(ax - pointer.x, ay - pointer.y)
           if (dist < LINK_DIST * 1.6) {
-            ctx.strokeStyle = `rgb(${accent} / ${0.5 * (1 - dist / (LINK_DIST * 1.6))})`
+            ctx.strokeStyle = `rgb(${accent} / ${0.5 * (1 - dist / (LINK_DIST * 1.6)) * a.z})`
             ctx.lineWidth = 1
             ctx.beginPath()
-            ctx.moveTo(a.x, a.y)
+            ctx.moveTo(ax, ay)
             ctx.lineTo(pointer.x, pointer.y)
             ctx.stroke()
           }
         }
       }
 
-      // Nodes.
+      // Nodes — nearer = bigger and brighter.
       for (const n of nodes) {
-        ctx.fillStyle = `rgb(${accent} / 0.85)`
+        ctx.fillStyle = `rgb(${accent} / ${0.3 + 0.6 * n.z})`
         ctx.beginPath()
-        ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2)
+        ctx.arc(px(n), py(n), 0.7 + 1.5 * n.z, 0, Math.PI * 2)
         ctx.fill()
       }
     }
 
     const step = () => {
       for (const n of nodes) {
-        n.x += n.vx
-        n.y += n.vy
+        // Nearer nodes drift faster — cheap motion parallax.
+        n.x += n.vx * (0.5 + n.z)
+        n.y += n.vy * (0.5 + n.z)
+        n.z += n.vz
         if (n.x < 0 || n.x > width) n.vx *= -1
         if (n.y < 0 || n.y > height) n.vy *= -1
+        if (n.z < 0.25 || n.z > 1) n.vz *= -1
       }
       draw()
       raf = requestAnimationFrame(step)

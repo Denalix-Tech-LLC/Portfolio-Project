@@ -32,7 +32,9 @@ export default function BentoCard({
     const px = (e.clientX - r.left) / r.width
     const py = (e.clientY - r.top) / r.height
     const max = 5 // degrees — subtle on purpose
-    el.style.transform = `rotateX(${-(py - 0.5) * 2 * max}deg) rotateY(${(px - 0.5) * 2 * max}deg)`
+    // translateZ lifts the card toward the viewer (real 3D pop — the grid
+    // wrapper supplies perspective), on top of the cursor tilt.
+    el.style.transform = `rotateX(${-(py - 0.5) * 2 * max}deg) rotateY(${(px - 0.5) * 2 * max}deg) translateZ(14px)`
     el.style.setProperty('--gx', `${px * 100}%`)
     el.style.setProperty('--gy', `${py * 100}%`)
   }

@@ -5,6 +5,7 @@ import Reveal from '../ui/Reveal'
 import Typewriter from '../ui/Typewriter'
 import CountUp from '../ui/CountUp'
 import NeuralCanvas from '../ui/NeuralCanvas'
+import WireCube from '../ui/WireCube'
 import SocialIcon from '../ui/SocialIcon'
 
 export default function Hero() {
@@ -16,6 +17,11 @@ export default function Hero() {
       <NeuralCanvas />
       {/* Fade the canvas into the page at the bottom. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
+
+      {/* 3D wireframe cube — floats gently at the hero's right edge. */}
+      <div className="pointer-events-none absolute right-[9%] top-[24%] hidden animate-float lg:block" aria-hidden="true">
+        <WireCube size={116} className="opacity-80" />
+      </div>
 
       <Container className="relative z-10 flex min-h-[88vh] flex-col justify-center py-20">
         <Reveal className="max-w-4xl">
