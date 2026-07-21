@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Portfolio — Content Manager</title>
+    <!-- Absolute config path: /admin (no trailing slash) would otherwise
+         resolve config.yml against the site root and get index.html. -->
+    <link rel="cms-config-url" type="text/yaml" href="/admin/config.yml" />
   </head>
   <body>
     <!-- Decap CMS (formerly Netlify CMS). Loads config from ./config.yml -->
