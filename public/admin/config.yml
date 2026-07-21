@@ -4,6 +4,10 @@ backend:
   branch: main
   base_url: https://prasannakumar.denalixtech.com
   auth_endpoint: /api/auth
+  commit_messages:
+    update: 'content: update {{path}} via CMS'
+    uploadMedia: 'content: upload {{path}}'
+    deleteMedia: 'content: remove {{path}}'
 
 # Set to true only when running `npx decap-server` for local editing.
 local_backend: false
