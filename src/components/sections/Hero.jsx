@@ -7,6 +7,7 @@ import CountUp from '../ui/CountUp'
 import NeuralCanvas from '../ui/NeuralCanvas'
 import WireCube from '../ui/WireCube'
 import SocialIcon from '../ui/SocialIcon'
+import BentoCard from '../ui/BentoCard'
 
 export default function Hero() {
   const { hero, roles, stats, availability, socials, shortName } = profile
@@ -75,10 +76,7 @@ export default function Hero() {
         <Reveal delay={120} className="mt-16">
           <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-xl border border-line bg-surface/60 p-4 backdrop-blur-sm transition-colors duration-300 hover:border-accent-500/40"
-              >
+              <BentoCard key={stat.label} bodyClassName="!p-4">
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
                   <CountUp
@@ -89,7 +87,7 @@ export default function Hero() {
                   />
                   <span className="mt-1 block text-sm text-ink-muted">{stat.label}</span>
                 </dd>
-              </div>
+              </BentoCard>
             ))}
           </dl>
         </Reveal>

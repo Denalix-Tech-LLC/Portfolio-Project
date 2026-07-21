@@ -4,8 +4,12 @@
  * Decorative only (aria-hidden); the global reduced-motion rule freezes it
  * at a static 3D angle. `size` is the edge length in px.
  */
-export default function WireCube({ size = 112, className = '' }) {
+export default function WireCube({ size = 112, reverse = false, duration, className = '' }) {
   const half = size / 2
+  const spin = {
+    animationDirection: reverse ? 'reverse' : undefined,
+    animationDuration: duration || undefined,
+  }
   const faces = [
     `rotateY(0deg) translateZ(${half}px)`,
     `rotateY(90deg) translateZ(${half}px)`,
@@ -21,7 +25,7 @@ export default function WireCube({ size = 112, className = '' }) {
       className={`cube-scene pointer-events-none ${className}`}
       style={{ width: size, height: size }}
     >
-      <div className="cube">
+      <div className="cube" style={spin}>
         {faces.map((transform) => (
           <div key={transform} className="cube-face" style={{ transform }} />
         ))}

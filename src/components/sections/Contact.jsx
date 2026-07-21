@@ -4,6 +4,7 @@ import Section, { Eyebrow } from '../ui/Section'
 import Reveal from '../ui/Reveal'
 import Button from '../ui/Button'
 import SocialIcon from '../ui/SocialIcon'
+import WireCube from '../ui/WireCube'
 
 export default function Contact() {
   const { contact, email, phone, socials } = profile
@@ -28,6 +29,10 @@ export default function Contact() {
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent-500/20 blur-3xl"
           />
+          {/* Counter-spinning 3D cube over the glow. */}
+          <div className="pointer-events-none absolute right-10 top-10 hidden animate-float md:block" aria-hidden="true">
+            <WireCube size={72} reverse duration="34s" className="opacity-60" />
+          </div>
 
           <div className="relative">
             <Eyebrow>contact</Eyebrow>

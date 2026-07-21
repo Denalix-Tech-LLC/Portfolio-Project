@@ -2,7 +2,7 @@
 export default function Chip({ children, className = '' }) {
   return (
     <span
-      className={`inline-flex items-center rounded-md border border-line bg-surface2/70 px-2.5 py-1 font-mono text-xs text-ink-muted transition-colors hover:border-accent-500/40 hover:text-accent-300 ${className}`}
+      className={`inline-flex items-center rounded-md border border-line bg-surface2/70 px-2.5 py-1 font-mono text-xs text-ink-muted transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-accent-500/40 hover:text-accent-300 ${className}`}
     >
       {children}
     </span>

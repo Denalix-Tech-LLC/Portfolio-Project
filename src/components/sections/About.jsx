@@ -21,7 +21,7 @@ export default function About() {
       <Reveal delay={80} className="mt-10">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {/* Portrait */}
-          <BentoCard className="lg:row-span-2" tilt={false} bodyClassName="!p-0 overflow-hidden">
+          <BentoCard className="lg:row-span-2" bodyClassName="!p-0 overflow-hidden">
             <img
               src={profile.portrait || '/prasanna.png'}
               alt={profile.name}

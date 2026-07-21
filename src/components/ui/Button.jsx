@@ -14,8 +14,8 @@ const sizes = {
 }
 
 const variants = {
-  primary: 'bg-accent-600 text-white hover:bg-accent-500 shadow-glow',
-  secondary: 'border border-line bg-surface/60 text-ink hover:border-accent-500/50 hover:-translate-y-0.5',
+  primary: 'bg-accent-600 text-white hover:bg-accent-500 shadow-glow hover:-translate-y-0.5 active:translate-y-0',
+  secondary: 'border border-line bg-surface/60 text-ink hover:border-accent-500/50 hover:-translate-y-0.5 active:translate-y-0',
   ghost: 'text-ink-muted hover:text-ink',
 }
 
