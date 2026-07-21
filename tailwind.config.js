@@ -89,12 +89,18 @@ export default {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
         },
+        aurora: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '33%': { transform: 'translate(70px, -50px) scale(1.15)' },
+          '66%': { transform: 'translate(-50px, 40px) scale(0.92)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
         float: 'float 6s ease-in-out infinite',
         blink: 'blink 1s step-end infinite',
         shimmer: 'shimmer 8s linear infinite',
+        aurora: 'aurora 18s ease-in-out infinite',
       },
     },
   },

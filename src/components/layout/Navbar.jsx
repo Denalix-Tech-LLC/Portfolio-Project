@@ -14,10 +14,15 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const [progress, setProgress] = useState(0)
   const close = () => setOpen(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8)
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(max > 0 ? window.scrollY / max : 0)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -99,6 +104,13 @@ export default function Navbar() {
           </button>
         </nav>
       </Container>
+
+      {/* Reading progress — thin accent bar along the header's bottom edge. */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gradient-to-r from-accent-600 via-accent-500 to-accent-300"
+        style={{ transform: `scaleX(${progress})` }}
+      />
 
       {open && (
         <div id="mobile-menu" className="border-t border-line bg-bg md:hidden">

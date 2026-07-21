@@ -110,9 +110,17 @@
     @apply border-accent-500/40;
   }
 
-  /* Accent gradient text for emphasis. */
+  /* Accent gradient text for emphasis. Wide background so `animate-shimmer`
+     can sweep a slow sheen across it (static gradient under reduced motion). */
   .text-gradient {
-    background: linear-gradient(100deg, rgb(var(--c-ink)), rgb(var(--c-accent-300)));
+    background: linear-gradient(
+      100deg,
+      rgb(var(--c-ink)),
+      rgb(var(--c-accent-300)) 40%,
+      rgb(var(--c-ink)) 60%,
+      rgb(var(--c-accent-300))
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

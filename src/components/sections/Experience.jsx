@@ -14,7 +14,12 @@ export default function Experience() {
         </h2>
       </Reveal>
 
-      <ol role="list" className="mt-12 space-y-5 border-l border-line pl-6 sm:pl-8">
+      <ol role="list" className="relative mt-12 space-y-5 pl-6 sm:pl-8">
+        {/* Timeline — violet fading into the page instead of a flat border. */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-accent-500/60 via-line to-transparent"
+        />
         {experience.map((job, i) => (
           <li key={`${job.company}-${job.role}`} className="relative">
             {/* Timeline marker */}

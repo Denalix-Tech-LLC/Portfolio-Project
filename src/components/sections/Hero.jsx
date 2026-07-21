@@ -24,6 +24,15 @@ export default function Hero() {
         <WireCube size={116} className="opacity-80" />
       </div>
 
+      {/* Aurora — slow drifting glow blobs behind the content. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[12%] top-[22%] h-80 w-80 animate-aurora rounded-full bg-accent-600/15 blur-3xl" />
+        <div
+          className="absolute bottom-[18%] right-[16%] h-72 w-72 animate-aurora rounded-full bg-accent-500/10 blur-3xl"
+          style={{ animationDelay: '-9s' }}
+        />
+      </div>
+
       <Container className="relative z-10 flex min-h-[88vh] flex-col justify-center py-20">
         <Reveal className="max-w-4xl">
           {/* Availability status */}
@@ -36,7 +45,7 @@ export default function Hero() {
           </p>
 
           <h1 className="text-6xl font-semibold sm:text-7xl">
-            <span className="text-gradient">{shortName}</span>
+            <span className="text-gradient animate-shimmer">{shortName}</span>
           </h1>
 
           {/* Role rotator */}
