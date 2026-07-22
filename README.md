@@ -1,79 +1,57 @@
-# Prasanna Kumar — Portfolio
+# Prasanna Kumar — Portfolio (v3)
 
-A fast, accessible, single-page developer portfolio built with **React + Vite + Tailwind CSS**.
-Dark **bento-grid** design with subtle AI-themed motion. All content lives in `src/data/`.
+Modern animated portfolio with an **AI-themed 3D hero** — a neural network of
+glowing nodes with signals flowing along its synapses, built purely from
+primitive geometries (no external 3D assets).
 
-## Quick start
+**Stack:** Next.js 15 (App Router, TypeScript strict) · React Three Fiber 9 ·
+framer-motion 12 · Tailwind CSS 3.
+
+## Run
 
 ```bash
 npm install
-npm run dev      # → http://localhost:5173
-npm run build    # production build → dist/
-npm run preview  # preview the build locally
+cp .env.example .env.local   # set ADMIN_PASSWORD
+npm run dev                  # http://localhost:3000
+npm run typecheck            # tsc --noEmit
+npm run build                # production build (stop the dev server first)
 ```
 
-Requires Node 18+ (developed on Node 24).
+Requires Node 18+.
 
-## Design & style
+## Edit content — no code, no rebuild
 
-- **Style: Bento grid** (chosen from the morphism/layout options) — modular tiles suit a dense
-  technical résumé and read as modern/AI-forward. Dark "engineer" theme.
-- **One accent — "Sky" light blue** (`#0EA5E9`), shipped as a scale. Buttons use `accent-600` +
-  white text (~5.9:1); links/labels use `accent-300/400` on the dark bg (~8–11:1). All AA.
-- **Type:** `Space Grotesk` (display) + `Manrope` (body) + `JetBrains Mono` (code/labels) —
-  self-hosted via `@fontsource-variable` (no runtime Google request).
-- **Tokens:** colors are CSS variables (RGB channels) in `src/index.css`; spacing/radii/shadows
-  in `tailwind.config.js`.
+Every visible string lives in **`content/site-content.json`** (typed by
+`types/content.ts`, documented in [`content/SCHEMA.md`](content/SCHEMA.md)).
+The page reads it per-request, so saves show up on refresh — no rebuild.
 
-## Creative animation (all reduced-motion aware)
+Open **`/admin`**, sign in with `ADMIN_PASSWORD`, edit in the tabbed form, hit
+**Save** (or Ctrl+S). Lists support add / remove / move up / move down.
+**Export JSON** downloads your current edits as a file.
 
-- **Neural-network canvas** in the hero — drifting nodes + edges that link to each other and to
-  your cursor. Node count is capped, DPR-limited, pauses when the tab is hidden, and renders a
-  single static frame under `prefers-reduced-motion`.
-- **Role typewriter** cycling job titles (screen readers get the full static list).
-- **Cursor-tilt bento cards** with an accent glare (fine pointers only).
-- **Count-up stats** that animate in when scrolled into view.
+> **On Vercel the filesystem is read-only**, so Save is disabled by design
+> there — the error message says so. Workflow for production edits: edit
+> locally and push, or use **Export JSON** and replace
+> `content/site-content.json` in the repo.
 
-## Project structure
+Images: put files in `public/` and reference them like `/prasanna.png`. An
+empty `image` on a project renders a unique themed SVG placeholder instead
+(choose the `motif`). The résumé download serves `public/resume.pdf`.
 
-```
-src/
-├── main.jsx            # entry (fonts + app)
-├── App.jsx / index.css # shell + design tokens & base a11y styles
-├── data/               # ← YOU EDIT THESE
-│   ├── profile.js      #   identity, roles, summary, stats, skills, contact
-│   ├── experience.js   #   work history (timeline)
-│   └── education.js    #   degrees + certifications
-├── hooks/              # useInView, usePrefersReducedMotion, useTypewriter
-├── components/
-│   ├── layout/         # Navbar, Footer, Layout (skip link + landmarks)
-│   ├── sections/       # Hero, About, Skills, Experience, Education, Contact
-│   └── ui/             # BentoCard, NeuralCanvas, Typewriter, CountUp, Button, Chip, …
-└── pages/Home.jsx      # section composition
-```
+## Design & accessibility
 
-## Make it yours
+- Dark engineer theme, **"Sky" light-blue accent** (#0EA5E9), AA contrast.
+- 3D hero renders on desktop fine-pointer devices; mobile and loading states
+  get an animated SVG neural net. Mouse parallax on desktop.
+- **Reduced motion respected everywhere** — the 3D scene freezes, counters
+  show final values, bars render full, reveals are static. framer-motion is
+  JS-driven, so this is gated via a hydration-safe hook
+  (`lib/useReducedMotionSafe.ts`), not just CSS.
+- Accessible project modal: focus trap, Esc/backdrop close, focus restore,
+  body scroll lock, keyboard-scrollable content.
+- No contact form — copy-to-clipboard info cards with aria-live announcements.
 
-Edit only the files in **`src/data/`**:
+## Deploy (Vercel)
 
-- **`profile.js`** — name, roles (the typewriter list), location, availability, email/phone,
-  social URLs, hero copy, hero `stats`, summary, and `skillGroups`.
-  > Update the **LinkedIn** and **GitHub** URLs — the GitHub one is a placeholder.
-- **`experience.js`** — each entry is a timeline card (`current: true` shows the live dot).
-- **`education.js`** — degrees and certifications (add a `href` to make a cert a link).
-
-Then swap `public/favicon.svg` and `public/og-image.svg` (a PNG/JPG works best for OG),
-and update the `<title>`/meta in `index.html`. To recolor, edit the `--c-accent-*` channels
-in `src/index.css`.
-
-## Deploy
-
-Static output (`dist/`) — deploy to **Vercel** (preset: Vite) or **Netlify** (build
-`npm run build`, publish `dist`), or any static host. `vercel.json`, `netlify.toml`, and
-`public/_redirects` are included.
-
-## Quality
-
-- Semantic landmarks, one `<h1>`, ordered headings, skip link, `role="list"` where Preflight
-  strips list semantics, 44px touch targets, visible focus rings, WCAG AA contrast (verified).
-- Verified: no horizontal overflow at 375 / 768 / 1280 px, no console errors, ~56 KB gzipped JS.
+Push to `main` — Vercel auto-builds (`vercel.json` pins the Next.js preset).
+Set the **`ADMIN_PASSWORD`** environment variable in Vercel project settings.

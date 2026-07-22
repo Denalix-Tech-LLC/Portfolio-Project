@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — dark "AI engineer" theme, Sky accent.
+   RGB channels so Tailwind opacity modifiers work.
+   ============================================================ */
+:root {
+  --c-bg: 10 11 15; /* #0A0B0F page */
+  --c-surface: 20 22 29; /* #14161D cards */
+  --c-surface-2: 27 30 39; /* #1B1E27 nested surfaces */
+  --c-ink: 231 233 238; /* #E7E9EE primary text (~15:1) */
+  --c-ink-muted: 158 164 179; /* #9EA4B3 secondary (~7:1 AA) */
+  --c-ink-soft: 125 132 149; /* #7D8495 labels/dates (~5:1 AA) */
+  --c-line: 38 42 54; /* #262A36 borders */
+
+  /* Accent — "Sky" light blue. 600 = button fill (white text ~5.9:1). */
+  --c-accent-200: 186 230 253;
+  --c-accent-300: 125 211 252;
+  --c-accent-400: 56 189 248;
+  --c-accent-500: 14 165 233;
+  --c-accent-600: 3 105 161;
+  --c-accent-700: 7 89 133;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(60rem 40rem at 80% -10%, rgb(var(--c-accent-500) / 0.08), transparent 60%),
+      radial-gradient(50rem 40rem at -10% 20%, rgb(var(--c-accent-700) / 0.07), transparent 55%),
+      radial-gradient(rgb(255 255 255 / 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 22px 22px;
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-accent-400));
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: rgb(var(--c-accent-500) / 0.35);
+    color: rgb(var(--c-ink));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Card surface. */
+  .panel {
+    @apply rounded-2xl border border-line bg-surface/80 shadow-card backdrop-blur-sm;
+  }
+
+  /* Accent gradient text. */
+  .text-gradient {
+    background: linear-gradient(100deg, rgb(var(--c-ink)), rgb(var(--c-accent-300)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Skip link — hidden until focused. */
+  .skip-link {
+    @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md bg-accent-600 px-4 py-2 text-sm font-semibold text-white transition-transform;
+  }
+  .skip-link:focus {
+    @apply translate-y-0;
+  }
+}

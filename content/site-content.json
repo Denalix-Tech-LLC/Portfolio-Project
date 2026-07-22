@@ -1,0 +1,538 @@
+{
+  "_comment": "Every visible string on the site lives here. Edit at /admin or by hand. Keys starting with _ are notes for editors and never render. See content/SCHEMA.md for a field guide.",
+  "meta": {
+    "_comment": "Browser tab title and search/social description.",
+    "siteTitle": "Prasanna Kumar — Product Engineer",
+    "description": "Prasanna Kumar Reddy Peram — Product Engineer with 3.5+ years shipping production software end to end: Python services, REST APIs, and Generative-AI features."
+  },
+  "nav": {
+    "_comment": "Top navigation. links[].href are #section anchors.",
+    "initials": "PK",
+    "logoText": "Prasanna Kumar",
+    "skipLinkLabel": "Skip to content",
+    "links": [
+      {
+        "id": "nav-about",
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "id": "nav-experience",
+        "label": "Experience",
+        "href": "#experience"
+      },
+      {
+        "id": "nav-projects",
+        "label": "Projects",
+        "href": "#projects"
+      },
+      {
+        "id": "nav-skills",
+        "label": "Skills",
+        "href": "#skills"
+      },
+      {
+        "id": "nav-contact",
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ],
+    "ctaLabel": "Get in touch",
+    "ctaHref": "#contact",
+    "menuOpenLabel": "Open menu",
+    "menuCloseLabel": "Close menu"
+  },
+  "hero": {
+    "_comment": "Full-screen 3D neural-network hero. resumeFile is a path under /public.",
+    "availability": "Open to Product Engineering roles",
+    "greeting": "Hi, I'm",
+    "name": "Prasanna Kumar",
+    "title": "Product Engineer · Backend & Generative AI",
+    "subtitle": "I build products end to end — turning user problems into production Python services, REST APIs, and AI features that customers actually use.",
+    "ctaPrimaryLabel": "View my work",
+    "ctaPrimaryHref": "#projects",
+    "ctaSecondaryLabel": "Get in touch",
+    "ctaSecondaryHref": "#contact",
+    "resumeLabel": "Download résumé",
+    "resumeFile": "/resume.pdf",
+    "scrollHintLabel": "Scroll to explore"
+  },
+  "about": {
+    "_comment": "photo is a path under /public; empty string shows a stylized placeholder.",
+    "heading": "Product Engineer who ships — from user to production.",
+    "eyebrow": "About",
+    "paragraphs": [
+      "Product Engineer who owns features end to end — from talking to users and shaping the roadmap to writing production Python, designing REST APIs, and embedding Generative AI into the product.",
+      "3.5+ years shipping software across product, HR-tech, and banking teams, grounded in Object-Oriented design, CI/CD, and SQL performance tuning. I measure success by customer impact over lines of code — making independent design and UX calls, iterating fast on feedback, and rebuilding when the data points to a better solution."
+    ],
+    "photo": "/prasanna.png",
+    "photoAlt": "Portrait of Prasanna Kumar Reddy Peram",
+    "stats": [
+      {
+        "id": "stat-years",
+        "value": 3.5,
+        "decimals": 1,
+        "suffix": "+",
+        "label": "Years shipping products"
+      },
+      {
+        "id": "stat-companies",
+        "value": 3,
+        "decimals": 0,
+        "suffix": "",
+        "label": "Companies shipped for"
+      },
+      {
+        "id": "stat-ops",
+        "value": 40,
+        "decimals": 0,
+        "suffix": "%",
+        "label": "Manual ops cut for customers"
+      },
+      {
+        "id": "stat-qa",
+        "value": 50,
+        "decimals": 0,
+        "suffix": "%",
+        "label": "QA effort automated away"
+      }
+    ],
+    "chipsLabel": "What I bring",
+    "chips": [
+      "End-to-End Ownership",
+      "Generative AI",
+      "REST API Design",
+      "Product Roadmapping",
+      "CI/CD",
+      "Agile / Scrum"
+    ]
+  },
+  "experience": {
+    "_comment": "Work history, newest first. current:true shows the live badge.",
+    "heading": "Where I've shipped.",
+    "eyebrow": "Experience",
+    "currentBadge": "Now",
+    "stackLabel": "Stack",
+    "items": [
+      {
+        "id": "exp-denalix",
+        "role": "Product Engineer",
+        "company": "Denalix Tech LLC",
+        "period": "June 2025 — Present",
+        "location": "Cleveland, USA",
+        "current": true,
+        "points": [
+          "Own product features end to end — from talking to users and shaping the roadmap to writing full-stack code, shipping to production, and supporting customers directly.",
+          "Translate customer pain points and business requirements into working software, making independent design and UX decisions to build experiences that solve real problems.",
+          "Build and ship production Python services and REST APIs, embedding Generative AI / LLM capabilities into the product to automate workflows and unlock new features.",
+          "Prioritize against the product roadmap, estimate technical effort, write clear technical specs, and keep quality high through code review and automated testing in CI/CD.",
+          "Measure success by customer impact over lines of code — iterating fast on user feedback and rebuilding when the data points to a better solution."
+        ],
+        "stack": [
+          "Python",
+          "REST APIs",
+          "Generative AI",
+          "Product",
+          "CI/CD",
+          "Azure"
+        ]
+      },
+      {
+        "id": "exp-phenom",
+        "role": "Product Development Engineer",
+        "company": "Phenom People",
+        "period": "Jan 2022 — Aug 2023",
+        "location": "Hyderabad, India",
+        "current": false,
+        "points": [
+          "Built an HR AI virtual assistant on the Rasa stack — job discovery, FAQs, candidate pre-screening, interview scheduling, and personalized job recommendations.",
+          "Developed and optimized RESTful APIs (GET / PATCH / DELETE) for client-specific bot configuration, cutting manual intervention by implementation teams by 40%.",
+          "Designed an API automation framework with Karate covering every bot-team service, reducing manual QA effort by 50% and accelerating the deployment lifecycle.",
+          "Integrated multi-channel experiences — Web, SMS, MS Teams, WhatsApp, Facebook — with event-driven architectures for seamless data flow across systems.",
+          "Enforced code quality via PyTest, Pylint, and SonarLint on Git/GitHub with Jenkins CI/CD; led OOP-based internal-gig business logic and its integrity constraints."
+        ],
+        "stack": [
+          "Python",
+          "Sanic",
+          "Rasa",
+          "REST",
+          "MongoDB",
+          "SQL",
+          "Jenkins",
+          "Karate"
+        ]
+      },
+      {
+        "id": "exp-achala",
+        "role": "Associate Software Engineer",
+        "company": "Achala IT Solutions",
+        "period": "Apr 2021 — Dec 2021",
+        "location": "Hyderabad, India",
+        "current": false,
+        "points": [
+          "Contributed to the end-to-end SDLC of high-availability banking production systems, holding to strict security and performance standards.",
+          "Developed robust REST APIs for seamless data exchange with third-party banking modules.",
+          "Built automated background schedulers for high-volume batch processing and system monitoring.",
+          "Optimized complex queries and relational data models for integrity and responsiveness under heavy load."
+        ],
+        "stack": [
+          "Java",
+          "Spring Boot",
+          "MongoDB",
+          "Postman",
+          "SQL"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "_comment": "image empty string → a unique themed SVG placeholder is drawn per motif (chatbot | api | automation | network | bank | ai). details[] carries the full story shown in the modal.",
+    "heading": "Things I've built.",
+    "eyebrow": "Projects",
+    "blurb": "Production systems from HR-tech chatbots to banking backends — each one shipped, measured, and iterated.",
+    "openLabel": "View details",
+    "modalCloseLabel": "Close",
+    "modalDetailsHeading": "What I did",
+    "modalStackHeading": "Built with",
+    "items": [
+      {
+        "id": "proj-hr-bot",
+        "title": "HR AI Virtual Assistant",
+        "tagline": "Conversational AI that screens, schedules, and recommends jobs for thousands of candidates.",
+        "image": "",
+        "imageAlt": "",
+        "motif": "chatbot",
+        "tags": [
+          "Rasa",
+          "Python",
+          "NLP",
+          "Chatbot"
+        ],
+        "details": [
+          "Developed an HR AI virtual assistant on the Rasa stack that displays jobs, resolves user queries and FAQs, pre-screens candidates, and schedules interviews with recruiters.",
+          "Added personalized job recommendations based on user interests and behavior.",
+          "Shipped across candidate experience (web, Facebook, text-to-apply SMS) and employee experience (web, text-to-refer SMS, MS Teams) platforms.",
+          "Automated WhatsApp messaging flows through predefined Python functions and built regex support for client-specific email and mobile formats."
+        ]
+      },
+      {
+        "id": "proj-bot-config",
+        "title": "Bot Configuration Platform",
+        "tagline": "Self-serve REST APIs that cut manual bot configuration work by 40%.",
+        "image": "",
+        "imageAlt": "",
+        "motif": "api",
+        "tags": [
+          "REST",
+          "Sanic",
+          "MongoDB",
+          "Microservices"
+        ],
+        "details": [
+          "Designed GET / PATCH / DELETE REST APIs to update bot messages for client-specific requirements — removing most manual work for implementation teams.",
+          "Built a customized job-alerts feature flag so clients can enable or disable features per tenant.",
+          "Developed microservices with the Python Sanic framework behind an API gateway.",
+          "Wrote maintenance scripts to bulk-update bot messages while preserving structure and hygiene."
+        ]
+      },
+      {
+        "id": "proj-karate",
+        "title": "Karate API Automation Suite",
+        "tagline": "BDD-style API test coverage for every bot-team service — QA effort down 50%.",
+        "image": "",
+        "imageAlt": "",
+        "motif": "automation",
+        "tags": [
+          "Karate",
+          "BDD",
+          "Jenkins",
+          "CI/CD"
+        ],
+        "details": [
+          "Designed and implemented a Karate-based API automation framework covering all services owned by the bot team.",
+          "Wrote BDD scenarios in Gherkin syntax for readability, reusability, and traceability to business requirements.",
+          "Wired the suite into Jenkins CI/CD so every release is gated by the automation pass.",
+          "Reduced manual QA effort by roughly 50% and accelerated the deployment lifecycle."
+        ]
+      },
+      {
+        "id": "proj-gigs",
+        "title": "Internal Gigs Platform",
+        "tagline": "OOP business logic for company-internal short-term jobs with airtight integrity rules.",
+        "image": "",
+        "imageAlt": "",
+        "motif": "network",
+        "tags": [
+          "Python",
+          "OOP",
+          "Domain Logic"
+        ],
+        "details": [
+          "Led the object-oriented business logic for 'gigs' — small jobs internal to the company.",
+          "Enforced integrity constraints such as preventing a gig manager from applying to gigs they created.",
+          "Collaborated with the product team through grooming, tech talks, and sprint ceremonies to shape the feature."
+        ]
+      },
+      {
+        "id": "proj-banking",
+        "title": "Banking Backend Services",
+        "tagline": "High-availability backend features for production banking systems.",
+        "image": "",
+        "imageAlt": "",
+        "motif": "bank",
+        "tags": [
+          "Java",
+          "Spring Boot",
+          "Schedulers",
+          "SQL"
+        ],
+        "details": [
+          "Developed backend features for a production banking project under strict security and performance standards.",
+          "Built APIs to retrieve user information for third-party banking modules.",
+          "Implemented automated background schedulers for high-volume batch processing and monitoring.",
+          "Profiled and tuned critical features with Postman and debugging tools."
+        ]
+      },
+      {
+        "id": "proj-genai",
+        "title": "GenAI Product Features",
+        "tagline": "LLM-powered workflows embedded directly into a live product.",
+        "image": "",
+        "imageAlt": "",
+        "motif": "ai",
+        "tags": [
+          "Generative AI",
+          "LLM",
+          "Python",
+          "Azure"
+        ],
+        "details": [
+          "Embed Generative AI / LLM capabilities into product features at Denalix Tech — automating workflows and unlocking functionality that wasn't feasible before.",
+          "Ship production Python services and REST APIs that wrap model calls with guardrails, evals, and observability.",
+          "Iterate directly with users: measure impact, keep what works, rebuild what doesn't."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "_comment": "level is 0–100 and drives the animated proficiency bar.",
+    "heading": "The stack I build with.",
+    "eyebrow": "Skills",
+    "groups": [
+      {
+        "id": "sg-langs",
+        "title": "Languages & Databases",
+        "items": [
+          {
+            "id": "sk-python",
+            "name": "Python",
+            "level": 92
+          },
+          {
+            "id": "sk-sql",
+            "name": "SQL",
+            "level": 85
+          },
+          {
+            "id": "sk-mongo",
+            "name": "MongoDB",
+            "level": 80
+          },
+          {
+            "id": "sk-bash",
+            "name": "Bash",
+            "level": 76
+          },
+          {
+            "id": "sk-java",
+            "name": "Java",
+            "level": 68
+          }
+        ]
+      },
+      {
+        "id": "sg-ai",
+        "title": "AI & Cloud",
+        "items": [
+          {
+            "id": "sk-genai",
+            "name": "Generative AI / LLMs",
+            "level": 88
+          },
+          {
+            "id": "sk-claude",
+            "name": "Claude Code / AI Tooling",
+            "level": 90
+          },
+          {
+            "id": "sk-rasa",
+            "name": "Rasa / Chatbots",
+            "level": 82
+          },
+          {
+            "id": "sk-azure",
+            "name": "Azure",
+            "level": 72
+          }
+        ]
+      },
+      {
+        "id": "sg-backend",
+        "title": "Backend & APIs",
+        "items": [
+          {
+            "id": "sk-rest",
+            "name": "REST API Design",
+            "level": 92
+          },
+          {
+            "id": "sk-sanic",
+            "name": "Sanic / Microservices",
+            "level": 85
+          },
+          {
+            "id": "sk-events",
+            "name": "Event-driven Architecture",
+            "level": 78
+          },
+          {
+            "id": "sk-spring",
+            "name": "Spring Boot",
+            "level": 62
+          }
+        ]
+      },
+      {
+        "id": "sg-quality",
+        "title": "Quality & Tooling",
+        "items": [
+          {
+            "id": "sk-karate",
+            "name": "Karate API Automation",
+            "level": 88
+          },
+          {
+            "id": "sk-pytest",
+            "name": "PyTest / Unit Testing",
+            "level": 85
+          },
+          {
+            "id": "sk-jenkins",
+            "name": "Jenkins CI/CD",
+            "level": 82
+          },
+          {
+            "id": "sk-git",
+            "name": "Git / GitHub",
+            "level": 90
+          }
+        ]
+      }
+    ]
+  },
+  "credentials": {
+    "_comment": "Education and certifications side by side.",
+    "heading": "Foundations & credentials.",
+    "eyebrow": "Education & Certifications",
+    "educationHeading": "Education",
+    "certificationsHeading": "Certifications",
+    "education": [
+      {
+        "id": "edu-cwru",
+        "degree": "M.S., Computer and Data Sciences",
+        "school": "Case Western Reserve University",
+        "period": "Aug 2023 — May 2025",
+        "location": "Cleveland, USA"
+      },
+      {
+        "id": "edu-rgukt",
+        "degree": "B.S., Computer Science Engineering",
+        "school": "IIIT — RK Valley, RGUKT (Rajiv Gandhi University of Knowledge and Technologies)",
+        "period": "Aug 2016 — Oct 2020",
+        "location": "Andhra Pradesh, India"
+      }
+    ],
+    "certifications": [
+      {
+        "id": "cert-de",
+        "name": "Data Engineering Nanodegree",
+        "issuer": "Udacity"
+      },
+      {
+        "id": "cert-ds",
+        "name": "Data Streaming Nanodegree",
+        "issuer": "Udacity"
+      },
+      {
+        "id": "cert-dsa",
+        "name": "Data Structures & Algorithms Nanodegree",
+        "issuer": "Udacity"
+      },
+      {
+        "id": "cert-pds",
+        "name": "Programming for Data Science with Python",
+        "issuer": "Udacity"
+      },
+      {
+        "id": "cert-pyds",
+        "name": "Python Data Structures",
+        "issuer": "Coursera"
+      },
+      {
+        "id": "cert-ids",
+        "name": "Implementation of Data Structures",
+        "issuer": "IIT Bombay"
+      },
+      {
+        "id": "cert-oop",
+        "name": "Object Oriented Programming",
+        "issuer": "IIT Bombay"
+      },
+      {
+        "id": "cert-algo",
+        "name": "Algorithms",
+        "issuer": "IIT Bombay"
+      },
+      {
+        "id": "cert-mta",
+        "name": "MTA: Programming Using Python",
+        "issuer": "Microsoft"
+      }
+    ]
+  },
+  "contact": {
+    "_comment": "Info cards with one-click copy. href empty = plain card, no link.",
+    "heading": "Let's build something that scales.",
+    "eyebrow": "Contact",
+    "blurb": "I'm open to Product Engineering roles — owning features end to end, from users to production. The fastest way to reach me is email — I read everything.",
+    "copyLabel": "Copy",
+    "copiedLabel": "Copied",
+    "copyAnnouncement": "copied to clipboard",
+    "cards": [
+      {
+        "id": "contact-email",
+        "label": "Email",
+        "value": "peramprasannakumar@gmail.com",
+        "href": "mailto:peramprasannakumar@gmail.com"
+      },
+      {
+        "id": "contact-linkedin",
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/prasanna-kumar-peram-mscs-633339139",
+        "href": "https://www.linkedin.com/in/prasanna-kumar-peram-mscs-633339139/"
+      },
+      {
+        "id": "contact-phone",
+        "label": "Phone",
+        "value": "+1 (216) 314-8720",
+        "href": "tel:+12163148720"
+      }
+    ]
+  },
+  "footer": {
+    "_comment": "The year is added automatically before `text`.",
+    "text": "Prasanna Kumar Reddy Peram",
+    "tagline": "Product Engineer · Cleveland, Ohio",
+    "backToTopLabel": "Back to top"
+  }
+}

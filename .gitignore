@@ -3,10 +3,14 @@ node_modules
 .pnp
 .pnp.js
 
-# Build output
+# Next.js build output
+.next
+out
+next-env.d.ts
+
+# Misc build
 dist
-dist-ssr
-*.local
+*.tsbuildinfo
 
 # Logs
 npm-debug.log*
@@ -21,7 +25,10 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Env
+# Env — secrets never enter git
 .env
-.env.*
+.env*.local
 !.env.example
+
+# Vercel
+.vercel
