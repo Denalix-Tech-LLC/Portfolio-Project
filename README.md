@@ -1,11 +1,11 @@
 # Prasanna Kumar — Portfolio (v3)
 
-Modern animated portfolio with an **AI-themed 3D hero** — a neural network of
-glowing nodes with signals flowing along its synapses, built purely from
-primitive geometries (no external 3D assets).
+Modern animated portfolio with an **AI-themed hero** — a lightweight canvas
+neural network: drifting nodes with a depth field, edges that link to each
+other and to your cursor (no WebGL library, ~zero bundle cost).
 
-**Stack:** Next.js 15 (App Router, TypeScript strict) · React Three Fiber 9 ·
-framer-motion 12 · Tailwind CSS 3.
+**Stack:** Next.js 15 (App Router, TypeScript strict) · framer-motion 12 ·
+Tailwind CSS 3.
 
 ## Run
 
@@ -61,9 +61,9 @@ empty `image` on a project renders a unique themed SVG placeholder instead
 ## Design & accessibility
 
 - Dark engineer theme, **"Sky" light-blue accent** (#0EA5E9), AA contrast.
-- 3D hero renders on desktop fine-pointer devices; mobile and loading states
-  get an animated SVG neural net. Mouse parallax on desktop.
-- **Reduced motion respected everywhere** — the 3D scene freezes, counters
+- Canvas neural-network hero: node count area-scaled and capped, DPR capped
+  at 2, pauses when the tab is hidden, cursor parallax + link-to-cursor.
+- **Reduced motion respected everywhere** — the hero renders one static frame, counters
   show final values, bars render full, reveals are static. framer-motion is
   JS-driven, so this is gated via a hydration-safe hook
   (`lib/useReducedMotionSafe.ts`), not just CSS.

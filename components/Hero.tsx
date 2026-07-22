@@ -1,32 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import type { HeroContent } from '@/types/content'
 import { useReducedMotionSafe } from '@/lib/useReducedMotionSafe'
-import HeroFallback from './HeroFallback'
+import NeuralCanvas from './NeuralCanvas'
 import { ArrowRightIcon, DownloadIcon, ChevronDownIcon } from './icons'
-
-// The 3D scene is client-only and lazy: mobile and slow connections get the
-// animated SVG fallback instead (also shown while the chunk loads).
-const NeuralScene = dynamic(() => import('@/scene/NeuralScene'), {
-  ssr: false,
-  loading: () => <HeroFallback />,
-})
 
 export default function Hero({ content }: { content: HeroContent }) {
   const reduced = useReducedMotionSafe()
-  const [show3D, setShow3D] = useState(false)
-
-  useEffect(() => {
-    // Render WebGL only on larger screens with a fine pointer.
-    const mql = window.matchMedia('(min-width: 1024px) and (pointer: fine)')
-    const update = () => setShow3D(mql.matches)
-    update()
-    mql.addEventListener('change', update)
-    return () => mql.removeEventListener('change', update)
-  }, [])
 
   const entrance = (delay: number) =>
     reduced
@@ -39,11 +20,13 @@ export default function Hero({ content }: { content: HeroContent }) {
 
   return (
     <section id="top" className="relative flex min-h-screen flex-col overflow-hidden">
-      {/* Background: 3D neural net on desktop, animated SVG otherwise. */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {show3D ? <NeuralScene /> : <HeroFallback />}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
-      </div>
+      {/* Background: the classic canvas neural network (decorative,
+          reduced-motion aware, pauses when the tab is hidden). */}
+      <NeuralCanvas />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg"
+      />
 
       <div className="relative z-10 mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-6 py-24 sm:px-8 lg:px-12">
         <motion.p

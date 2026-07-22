@@ -5,7 +5,7 @@ import type { Config } from 'tailwindcss'
 const withOpacity = (variable: string) => `rgb(var(${variable}) / <alpha-value>)`
 
 const config: Config = {
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './scene/**/*.{ts,tsx}'],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -49,18 +49,9 @@ const config: Config = {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
         },
-        'pulse-dot': {
-          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.4', transform: 'scale(0.8)' },
-        },
-        'dash-flow': {
-          to: { strokeDashoffset: '-24' },
-        },
       },
       animation: {
         blink: 'blink 1s step-end infinite',
-        'pulse-dot': 'pulse-dot 2.4s ease-in-out infinite',
-        'dash-flow': 'dash-flow 1.6s linear infinite',
       },
     },
   },
