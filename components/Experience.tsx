@@ -1,6 +1,7 @@
 import type { ExperienceContent } from '@/types/content'
 import Section from './Section'
 import Reveal from './Reveal'
+import TiltCard from './TiltCard'
 
 export default function Experience({ content }: { content: ExperienceContent }) {
   return (
@@ -23,7 +24,8 @@ export default function Experience({ content }: { content: ExperienceContent }) 
             </span>
 
             <Reveal delay={(i % 2) * 70}>
-              <article className="panel flex flex-col gap-4 p-6">
+              <TiltCard>
+                <article className="panel flex flex-col gap-4 p-6 transition-colors hover:border-accent-500/40">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
                     <h3 className="flex items-center gap-3 text-xl font-semibold text-ink">
@@ -63,7 +65,8 @@ export default function Experience({ content }: { content: ExperienceContent }) 
                   </span>
                   {job.stack.join(' · ')}
                 </p>
-              </article>
+                </article>
+              </TiltCard>
             </Reveal>
           </li>
         ))}
