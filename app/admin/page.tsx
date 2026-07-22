@@ -293,13 +293,15 @@ export default function AdminPage() {
         setRelogin(true)
         return
       }
-      const json = await res.json().catch(() => ({}))
+      const json = (await res.json().catch(() => ({}))) as { error?: string; message?: string }
       if (!res.ok) {
         setStatus(json.error ?? 'Save failed.')
         return
       }
       setDirty(false)
-      setStatus('Saved. Changes are live.')
+      // Read-only hosts save via a GitHub commit — surface the server's
+      // "redeploying" note instead of a bare "Saved".
+      setStatus(json.message ?? 'Saved. Changes are live.')
     } catch (err) {
       setStatus(`Save failed: ${String(err)}`)
     } finally {
