@@ -1,0 +1,9 @@
+# Never let git touch line endings in binaries (a converted PDF is a corrupt PDF).
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
