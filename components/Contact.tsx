@@ -32,14 +32,14 @@ export default function Contact({ content }: { content: ContactContent }) {
         {announcement}
       </span>
 
-      <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid grid-cols-1 items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {content.cards.map((card, i) => {
           const copied = copiedId === card.id
           const isLinkedIn = card.href.includes('linkedin.com')
           return (
             <li key={card.id}>
               <Reveal delay={(i % 3) * 80}>
-                <div className="panel flex h-full flex-col gap-3 p-6 transition-colors hover:border-accent-500/40">
+                <div className="panel flex flex-col gap-3 p-5 transition-colors hover:border-accent-500/40">
                   <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
                     {card.label}
                   </h3>
@@ -61,14 +61,16 @@ export default function Contact({ content }: { content: ContactContent }) {
                       {card.display || card.value}
                     </p>
                   )}
-                  <button
-                    type="button"
-                    onClick={() => copy(card.id, card.label, card.value)}
-                    className="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-line px-4 py-2 font-mono text-xs text-ink-muted transition-colors hover:border-accent-500/50 hover:text-accent-300 focus-visible:outline-none focus-visible:shadow-focus"
-                  >
-                    {copied ? <CheckIcon className="h-3.5 w-3.5" /> : <CopyIcon className="h-3.5 w-3.5" />}
-                    {copied ? content.copiedLabel : content.copyLabel}
-                  </button>
+                  {!isLinkedIn && (
+                    <button
+                      type="button"
+                      onClick={() => copy(card.id, card.label, card.value)}
+                      className="mt-1 inline-flex w-fit items-center gap-2 rounded-full border border-line px-4 py-2 font-mono text-xs text-ink-muted transition-colors hover:border-accent-500/50 hover:text-accent-300 focus-visible:outline-none focus-visible:shadow-focus"
+                    >
+                      {copied ? <CheckIcon className="h-3.5 w-3.5" /> : <CopyIcon className="h-3.5 w-3.5" />}
+                      {copied ? content.copiedLabel : content.copyLabel}
+                    </button>
+                  )}
                 </div>
               </Reveal>
             </li>
