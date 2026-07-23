@@ -4,7 +4,7 @@ import { useState } from 'react'
 import type { ContactContent } from '@/types/content'
 import Section from './Section'
 import Reveal from './Reveal'
-import { CopyIcon, CheckIcon, ExternalIcon } from './icons'
+import { CopyIcon, CheckIcon, ExternalIcon, LinkedInIcon } from './icons'
 
 /** Contact — info cards with one-click copy. No contact form by design. */
 export default function Contact({ content }: { content: ContactContent }) {
@@ -35,6 +35,7 @@ export default function Contact({ content }: { content: ContactContent }) {
       <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {content.cards.map((card, i) => {
           const copied = copiedId === card.id
+          const isLinkedIn = card.href.includes('linkedin.com')
           return (
             <li key={card.id}>
               <Reveal delay={(i % 3) * 80}>
@@ -47,11 +48,12 @@ export default function Contact({ content }: { content: ContactContent }) {
                       href={card.href}
                       target={card.href.startsWith('http') ? '_blank' : undefined}
                       rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="inline-flex items-start gap-2 break-all text-lg font-semibold text-ink transition-colors hover:text-accent-300"
+                      className="inline-flex items-center gap-2.5 break-all text-lg font-semibold text-ink transition-colors hover:text-accent-300"
                     >
+                      {isLinkedIn && <LinkedInIcon className="h-5 w-5 flex-none text-accent-400" />}
                       {card.display || card.value}
-                      {card.href.startsWith('http') && (
-                        <ExternalIcon className="mt-1.5 h-4 w-4 flex-none" />
+                      {card.href.startsWith('http') && !isLinkedIn && (
+                        <ExternalIcon className="h-4 w-4 flex-none" />
                       )}
                     </a>
                   ) : (
