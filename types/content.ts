@@ -179,6 +179,8 @@ export interface ContactContent {
   copyLabel: string
   copiedLabel: string
   copyAnnouncement: string
+  /** Action label for link-only cards (e.g. LinkedIn) that have no Copy. */
+  openLabel: string
   cards: ContactCard[]
 }
 

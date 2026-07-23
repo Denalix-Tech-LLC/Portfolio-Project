@@ -815,10 +815,11 @@ export default function AdminPage() {
             <Field label="Eyebrow" value={data.contact.eyebrow} onChange={(v) => patch((d) => void (d.contact.eyebrow = v))} />
             <Field label="Heading" value={data.contact.heading} onChange={(v) => patch((d) => void (d.contact.heading = v))} />
             <Field label="Blurb" textarea value={data.contact.blurb} onChange={(v) => patch((d) => void (d.contact.blurb = v))} />
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <Field label="Copy button label" value={data.contact.copyLabel} onChange={(v) => patch((d) => void (d.contact.copyLabel = v))} />
               <Field label="Copied label" value={data.contact.copiedLabel} onChange={(v) => patch((d) => void (d.contact.copiedLabel = v))} />
               <Field label="Screen-reader announcement suffix" value={data.contact.copyAnnouncement} onChange={(v) => patch((d) => void (d.contact.copyAnnouncement = v))} />
+              <Field label="Open-link label (LinkedIn card)" value={data.contact.openLabel} onChange={(v) => patch((d) => void (d.contact.openLabel = v))} />
             </div>
             {data.contact.cards.map((card, i) => (
               <ItemCard

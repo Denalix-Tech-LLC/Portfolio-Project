@@ -4,7 +4,7 @@ import { useState } from 'react'
 import type { ContactContent } from '@/types/content'
 import Section from './Section'
 import Reveal from './Reveal'
-import { CopyIcon, CheckIcon, ExternalIcon, LinkedInIcon } from './icons'
+import { CopyIcon, CheckIcon, ExternalIcon, LinkedInIcon, MailIcon, PhoneIcon } from './icons'
 
 /** Contact — info cards with one-click copy. No contact form by design. */
 export default function Contact({ content }: { content: ContactContent }) {
@@ -32,40 +32,60 @@ export default function Contact({ content }: { content: ContactContent }) {
         {announcement}
       </span>
 
-      <ul className="mt-12 grid grid-cols-1 items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {content.cards.map((card, i) => {
           const copied = copiedId === card.id
           const isLinkedIn = card.href.includes('linkedin.com')
+          const LeadIcon = isLinkedIn
+            ? LinkedInIcon
+            : card.href.startsWith('mailto:')
+              ? MailIcon
+              : card.href.startsWith('tel:')
+                ? PhoneIcon
+                : null
+          const shown = card.display || card.value
+          const actionPill =
+            'mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-line px-4 py-2 font-mono text-xs text-ink-muted transition-colors hover:border-accent-500/50 hover:text-accent-300 focus-visible:outline-none focus-visible:shadow-focus'
+
           return (
-            <li key={card.id}>
-              <Reveal delay={(i % 3) * 80}>
-                <div className="panel flex flex-col gap-3 p-5 transition-colors hover:border-accent-500/40">
+            <li key={card.id} className="h-full">
+              <Reveal delay={(i % 3) * 80} className="h-full">
+                {/* Every card has the same anatomy — label, icon + value,
+                    action pill — so the row stays perfectly even. */}
+                <div className="panel flex h-full flex-col gap-3 p-5 transition-colors hover:border-accent-500/40">
                   <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
                     {card.label}
                   </h3>
-                  {card.href ? (
+                  <div className="mb-2 flex items-center gap-2.5">
+                    {LeadIcon && <LeadIcon className="h-5 w-5 flex-none text-accent-400" />}
+                    {card.href ? (
+                      <a
+                        href={card.href}
+                        target={card.href.startsWith('http') ? '_blank' : undefined}
+                        rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="break-all text-lg font-semibold text-ink transition-colors hover:text-accent-300"
+                      >
+                        {shown}
+                      </a>
+                    ) : (
+                      <p className="break-all text-lg font-semibold text-ink">{shown}</p>
+                    )}
+                  </div>
+                  {isLinkedIn ? (
                     <a
                       href={card.href}
-                      target={card.href.startsWith('http') ? '_blank' : undefined}
-                      rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="inline-flex items-center gap-2.5 break-all text-lg font-semibold text-ink transition-colors hover:text-accent-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={actionPill}
                     >
-                      {isLinkedIn && <LinkedInIcon className="h-5 w-5 flex-none text-accent-400" />}
-                      {card.display || card.value}
-                      {card.href.startsWith('http') && !isLinkedIn && (
-                        <ExternalIcon className="h-4 w-4 flex-none" />
-                      )}
+                      <ExternalIcon className="h-3.5 w-3.5" />
+                      {content.openLabel}
                     </a>
                   ) : (
-                    <p className="break-all text-lg font-semibold text-ink">
-                      {card.display || card.value}
-                    </p>
-                  )}
-                  {!isLinkedIn && (
                     <button
                       type="button"
                       onClick={() => copy(card.id, card.label, card.value)}
-                      className="mt-1 inline-flex w-fit items-center gap-2 rounded-full border border-line px-4 py-2 font-mono text-xs text-ink-muted transition-colors hover:border-accent-500/50 hover:text-accent-300 focus-visible:outline-none focus-visible:shadow-focus"
+                      className={actionPill}
                     >
                       {copied ? <CheckIcon className="h-3.5 w-3.5" /> : <CopyIcon className="h-3.5 w-3.5" />}
                       {copied ? content.copiedLabel : content.copyLabel}

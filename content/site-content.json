@@ -520,6 +520,7 @@
     "copyLabel": "Copy",
     "copiedLabel": "Copied",
     "copyAnnouncement": "copied to clipboard",
+    "openLabel": "Open profile",
     "cards": [
       {
         "id": "contact-email",
