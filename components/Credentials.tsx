@@ -1,6 +1,7 @@
 import type { CredentialsContent } from '@/types/content'
 import Section from './Section'
 import Reveal from './Reveal'
+import { ExternalIcon } from './icons'
 
 export default function Credentials({ content }: { content: CredentialsContent }) {
   return (
@@ -8,7 +9,7 @@ export default function Credentials({ content }: { content: CredentialsContent }
       <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-5">
         {/* Education */}
         <Reveal className="lg:col-span-3">
-          <div className="panel h-full p-6">
+          <div className="panel flex h-full flex-col p-6">
             <h3 className="font-mono text-sm text-ink-soft">{content.educationHeading}</h3>
             <ul className="mt-6 space-y-6">
               {content.education.map((ed) => (
@@ -21,6 +22,42 @@ export default function Credentials({ content }: { content: CredentialsContent }
                 </li>
               ))}
             </ul>
+
+            {/* Focus areas — fills the column and adds scannable keywords. */}
+            <div className="mt-8 border-t border-line pt-6">
+              <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
+                {content.focusHeading}
+              </h4>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {content.focusAreas.map((area) => (
+                  <li
+                    key={area}
+                    className="rounded-md border border-line bg-surface2/70 px-2.5 py-1 font-mono text-xs text-ink-muted transition-colors hover:border-accent-500/40 hover:text-accent-300"
+                  >
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Writing/blog card. */}
+            <div className="mt-auto pt-6">
+              <div className="rounded-xl border border-line bg-surface2/40 p-4 transition-colors hover:border-accent-500/40">
+                <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-accent-400">
+                  {content.blogHeading}
+                </h4>
+                <p className="mt-2 text-sm text-ink-muted">{content.blogText}</p>
+                <a
+                  href={content.blogHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 font-mono text-sm text-accent-300 transition-colors hover:text-accent-200"
+                >
+                  {content.blogLinkLabel}
+                  <ExternalIcon className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
           </div>
         </Reveal>
 

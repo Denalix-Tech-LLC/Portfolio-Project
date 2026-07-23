@@ -452,6 +452,18 @@
         "location": "Andhra Pradesh, India"
       }
     ],
+    "focusHeading": "Graduate focus areas",
+    "focusAreas": [
+      "Data Engineering",
+      "Machine Learning",
+      "Distributed Systems",
+      "Data Privacy & LLMs",
+      "Algorithms"
+    ],
+    "blogHeading": "Writing",
+    "blogText": "I write about AI and data privacy in the LLM era.",
+    "blogLinkLabel": "medium.com/@peramprasannakumar",
+    "blogHref": "https://medium.com/@peramprasannakumar",
     "certifications": [
       {
         "id": "cert-de",

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import type { HeroContent } from '@/types/content'
 import { useReducedMotionSafe } from '@/lib/useReducedMotionSafe'
 import NeuralCanvas from './NeuralCanvas'
+import WireCube from './WireCube'
 import { ArrowRightIcon, DownloadIcon, ChevronDownIcon } from './icons'
 
 export default function Hero({ content }: { content: HeroContent }) {
@@ -27,6 +28,34 @@ export default function Hero({ content }: { content: HeroContent }) {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg"
       />
+
+      {/* 3D wireframe cube with orbiting satellites — hero's right edge. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[6%] top-[20%] hidden animate-float lg:block"
+      >
+        <div className="relative flex h-60 w-60 items-center justify-center">
+          <span className="orbit inset-0" style={{ animationDuration: '16s' }}>
+            <span className="orbit-dot" />
+          </span>
+          <span
+            className="orbit inset-7"
+            style={{ animationDuration: '10s', animationDirection: 'reverse' }}
+          >
+            <span className="orbit-dot" />
+          </span>
+          <WireCube size={104} className="opacity-80" />
+        </div>
+      </div>
+
+      {/* Aurora — slow drifting glow blobs behind the content. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-[12%] top-[22%] h-80 w-80 animate-aurora rounded-full bg-accent-600/15 blur-3xl" />
+        <div
+          className="absolute bottom-[18%] right-[16%] h-72 w-72 animate-aurora rounded-full bg-accent-500/10 blur-3xl"
+          style={{ animationDelay: '-9s' }}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-6 py-24 sm:px-8 lg:px-12">
         <motion.p

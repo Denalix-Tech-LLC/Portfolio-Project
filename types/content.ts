@@ -152,6 +152,12 @@ export interface CredentialsContent {
   certificationsHeading: string
   education: EducationItem[]
   certifications: CertificationItem[]
+  focusHeading: string
+  focusAreas: string[]
+  blogHeading: string
+  blogText: string
+  blogLinkLabel: string
+  blogHref: string
 }
 
 export interface ContactCard {

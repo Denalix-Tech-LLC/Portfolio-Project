@@ -748,6 +748,14 @@ export default function AdminPage() {
               <Field label="Education column heading" value={data.credentials.educationHeading} onChange={(v) => patch((d) => void (d.credentials.educationHeading = v))} />
               <Field label="Certifications column heading" value={data.credentials.certificationsHeading} onChange={(v) => patch((d) => void (d.credentials.certificationsHeading = v))} />
             </div>
+            <Field label="Focus-areas heading" value={data.credentials.focusHeading} onChange={(v) => patch((d) => void (d.credentials.focusHeading = v))} />
+            <StringListEditor label="Focus areas" items={data.credentials.focusAreas} onChange={(items) => patch((d) => void (d.credentials.focusAreas = items))} />
+            <div className="grid grid-cols-2 gap-3">
+              <Field label="Blog card heading" value={data.credentials.blogHeading} onChange={(v) => patch((d) => void (d.credentials.blogHeading = v))} />
+              <Field label="Blog link label" value={data.credentials.blogLinkLabel} onChange={(v) => patch((d) => void (d.credentials.blogLinkLabel = v))} />
+            </div>
+            <Field label="Blog card text" textarea value={data.credentials.blogText} onChange={(v) => patch((d) => void (d.credentials.blogText = v))} />
+            <Field label="Blog URL" value={data.credentials.blogHref} onChange={(v) => patch((d) => void (d.credentials.blogHref = v))} />
             <div className="space-y-2">
               <span className="block font-mono text-xs uppercase tracking-wider text-ink-soft">Education</span>
               {data.credentials.education.map((ed, i) => (
