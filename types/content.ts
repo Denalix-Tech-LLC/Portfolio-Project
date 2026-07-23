@@ -163,7 +163,10 @@ export interface CredentialsContent {
 export interface ContactCard {
   id: string
   label: string
+  /** What the Copy button copies (and the shown text when `display` is empty). */
   value: string
+  /** Text shown on the card. Empty = show `value` itself. */
+  display: string
   /** Optional link target (mailto:, tel:, https://). Empty = not a link. */
   href: string
 }

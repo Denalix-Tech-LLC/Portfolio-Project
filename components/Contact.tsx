@@ -49,13 +49,15 @@ export default function Contact({ content }: { content: ContactContent }) {
                       rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="inline-flex items-start gap-2 break-all text-lg font-semibold text-ink transition-colors hover:text-accent-300"
                     >
-                      {card.value}
+                      {card.display || card.value}
                       {card.href.startsWith('http') && (
                         <ExternalIcon className="mt-1.5 h-4 w-4 flex-none" />
                       )}
                     </a>
                   ) : (
-                    <p className="break-all text-lg font-semibold text-ink">{card.value}</p>
+                    <p className="break-all text-lg font-semibold text-ink">
+                      {card.display || card.value}
+                    </p>
                   )}
                   <button
                     type="button"

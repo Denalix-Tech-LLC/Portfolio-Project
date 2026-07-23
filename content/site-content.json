@@ -525,18 +525,21 @@
         "id": "contact-email",
         "label": "Email",
         "value": "peramprasannakumar@gmail.com",
+        "display": "",
         "href": "mailto:peramprasannakumar@gmail.com"
       },
       {
         "id": "contact-linkedin",
         "label": "LinkedIn",
-        "value": "linkedin.com/in/prasanna-kumar-peram-mscs-633339139",
+        "value": "https://www.linkedin.com/in/prasanna-kumar-peram-mscs-633339139/",
+        "display": "LinkedIn",
         "href": "https://www.linkedin.com/in/prasanna-kumar-peram-mscs-633339139/"
       },
       {
         "id": "contact-phone",
         "label": "Phone",
         "value": "+1 (216) 314-8720",
+        "display": "",
         "href": "tel:+12163148720"
       }
     ]

@@ -835,11 +835,12 @@ export default function AdminPage() {
                 }
               >
                 <Field label="Label" value={card.label} onChange={(v) => patch((d) => void (d.contact.cards[i].label = v))} />
-                <Field label="Value (shown + copied)" value={card.value} onChange={(v) => patch((d) => void (d.contact.cards[i].value = v))} />
+                <Field label="Value (what Copy copies)" value={card.value} onChange={(v) => patch((d) => void (d.contact.cards[i].value = v))} />
+                <Field label="Display text (empty = show the value)" value={card.display} onChange={(v) => patch((d) => void (d.contact.cards[i].display = v))} />
                 <Field label="Link (mailto:/tel:/https:// — empty = no link)" value={card.href} onChange={(v) => patch((d) => void (d.contact.cards[i].href = v))} />
               </ItemCard>
             ))}
-            <button type="button" className={addBtn} onClick={() => patch((d) => void d.contact.cards.push({ id: newId('contact'), label: 'New card', value: '', href: '' }))}>
+            <button type="button" className={addBtn} onClick={() => patch((d) => void d.contact.cards.push({ id: newId('contact'), label: 'New card', value: '', display: '', href: '' }))}>
               + Add card
             </button>
           </div>
